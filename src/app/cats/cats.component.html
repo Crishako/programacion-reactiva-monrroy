@@ -1,0 +1,50 @@
+
+<ng-container *ngIf="catBreeds$ | async as catBreeds ">
+    <form [formGroup]="catsForm">
+        <div class="row">
+        <div class="col-3">
+            <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Límite de Cartas</mat-label>
+            <mat-select formControlName="limite" disableRipple>
+                <mat-option value="10">10</mat-option>
+                <mat-option value="20">20</mat-option>
+                <mat-option value="30">30</mat-option>
+                <mat-option value="50">50</mat-option>
+                <mat-option value="100">100</mat-option>
+                <mat-option value="200">200</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-3">
+            <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Raza</mat-label>
+            <mat-select formControlName="breed" disableRipple >
+                <mat-option *ngFor="let catBreed of catBreeds" [value]="catBreed.id">{{catBreed.name}}</mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+        </div>
+    </form>
+</ng-container>
+
+<ng-container *ngIf="catImages$ | async as catImages ; else loading">
+  <div class="row">
+    <mat-card *ngFor="let catImage of catImages" class="example-card m-1">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image" style="background-image: url({{catImage.url}});"></div>
+        <mat-card-title>{{catImage.breed}}</mat-card-title>
+        <mat-card-subtitle>Cat Breed</mat-card-subtitle>
+      </mat-card-header>
+      <img class="mat-card-image" [src]="catImage.url" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p><b>Origen:</b> {{catImage.origen}}</p>
+        <p><b>Temperamento:</b> {{catImage.temperamento}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-container>
+
+
+<ng-template #loading>
+    <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+</ng-template>

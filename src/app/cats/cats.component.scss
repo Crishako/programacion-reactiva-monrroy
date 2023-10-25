@@ -1,0 +1,37 @@
+.example-card {
+    width: 350px; /* Tamaño fijo del card */
+    height: 400px; /* Tamaño fijo del card */
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .mat-card-image {
+    width: 100%; /* Ancho del 100% del card */
+    height: 200px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Ajustar la imagen al tamaño del contenedor */
+    }
+  
+  .mat-card-content {
+    padding: 16px;
+  }
+  
+  .mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+  }
+  
+  .mat-card-title {
+    font-size: 16px;
+  }
+  
+  .mat-card-subtitle {
+    font-size: 14px;
+  }
+  
+  .loading{
+    color: white;
+    padding-top: 50px;
+  }
